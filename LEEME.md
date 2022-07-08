@@ -1,4 +1,4 @@
-#BlackoutGame
+# BlackoutGame
 Un juego que requiere que sobrevivas.
 
 **_1. BUGS CONOCIDOS_** Hay un montón de errores en esta cáscara de un juego, pero es jugable. Desde el archivo en el que se ejecutó antes normalmente no había grandes problemas, pero ¿qué sé yo?
