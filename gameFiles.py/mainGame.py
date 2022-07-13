@@ -1,4 +1,4 @@
-print("Juego Iniciado.")
+print("Game Started.")
 while days != 365:
     if supplies <= 0:
         break
@@ -26,230 +26,223 @@ while days != 365:
                 print("'Y' to rescue, 'N' to leave.")
                 time.sleep(2)
                 print("WARNING: This event only occurs once, choose wisely.")
-                opc = input()
-                if opc != "":
-                    if opc == 'Y':
+                opi = input()
+                if opi != "":
+                    if opi == 'Y':
                         print("You saved the mechanic, when you sleep you waste 1+ supplies.")
                         fixwer = 1
-                    elif opc == 'N':
+                    elif opi == 'N':
                         print("You decide to leave, nothing changed.")
           else:
               event = 1
         elif event == 12:
             if UE1 == 1:
                 UE2 = 1
-                print("While traveling the cosmos, you found a faint signal. By pure luck, you managed to")
+                print("While traveling the cosmos, you found a faint signal. By pure luck, you managed to augment it and went to the site.")
                 print()
                 time.sleep(1)
-                print("LLegando al lugar encuentras a un superviviente sorprendentemente carismatico, y te intenta convencer de que lo dejes ir contigo.")
+                print("Arriving, you notice a charismatic fellow who is trying to convince you to let him join your crew.")
                 time.sleep(2)
-                print("EFECTOS: Acceso al menu de 'Intercambio' , - 1 suministros al dormir , mejor suerte al Saquear")
-                print("'Y' para aceptar y 'N' para negarte")
+                print("EFFECTS: Access to the 'Trade' Menu (Alpha Branch), +1 supplies wasted when sleeping & access to unique options (Alpha Branch)")
+                print("'Y' to accept & 'N' to deny")
                 time.sleep(2)
-                print("ADVERTENCIA: Este evento es de una vez, esta elección importa.")
+                print("WARNING: This event only happens once, choose wisely...")
                 opc = input()
                 if opc != "":
                     if opc == 'Y':
-                        print("Muy bien, el entro a tu nave. - 1 suministros al dormir, acceso")
+                        print("He joined your crew, +1 supplies wasted when sleeping.")
             else:
-                print("Al navegar por el cosmos encuentras una señal de radio, principalmente estatica, pero algo entendible. Ya que no sabes como aumentar la intensidad de la radio, tuviste que irte de largo. *Encuentra al mecanico*")
+                print("A signal appeared in your radar, unfortunately the location is really risky, so you decide to ignore it for now *Trigger Events*")
+                event = 1
         elif event == 6:
             time.sleep(1)
-            print("Al llegar a una galaxia desconocida, te topaste con una estación. En ella te ofrecen 20 de combustible a cambio de 7 suministros o 20 Æ")
-            print("Tienes "+str(Comb)+" de combustible, "+str(Amoney)+" creditos y "+str(supplies)+" suministros.")
-            print("'Y' para aceptar, 'N' para negarte")
+            print("While travelling, a nearby station offered you 20 fuel tanks for either 7 supplies or 20 Æ [Crediits]")
+            print("You have "+str(Comb)+" fuel tanks, "+str(Amoney)+" credits & "+str(supplies)+" supplies.")
+            print("'Y' to accept, 'N' to deny")
             op = input()
             if op != "":
                 if op == 'Y':
                     print()
-                    print("Con que quieres pagar, con creditos Æ o suministros.")
-                    print("'C' para pagar con creditos, 'S' para pagar con suministros.")
+                    print("With what do you want to pay?.")
+                    print("'C' to pay with credits, 'S' to pay with supplies.")
                     op = input()
                     if op != "":
                         if op == 'C':
-                            print("Muy bien, recibiste mas combustible. + 20 de combustible, - 20 Æ")
+                            print("You received more fuel tanks.. + 20 fuel tanks, - 20 Æ [Credits]")
                             Amoney -= 20
                             Comb += 20
                             event = 1
                         if op == 'S':
-                            print("Muy bien, recibiste mas combustible. + 20 de combustible, - 7 suministros")
-                            supplies -= 20
+                            print("You recibed more fuel tanks. + 20 fuel tanks, - 7 supplies")
+                            supplies -= 7
                             Comb += 20
                             event = 1
                 else:
-                    print("Te negaste a la oferta.")
+                    print("You denied the offer.")
                     event = 1
     print('')
-    print("Sistemas de la nave 'Blackout'")
-    print('Suministros = '+str(supplies))
+    print("'Blackout' Ship systems")
+    print('Supplies = '+str(supplies))
     print('OxyGen = '+ str(oxygen))
     print('WaterRen = '+ str(water))
-    print('Combustible = '+ str(Comb))
+    print('Fuel Tanks = '+ str(Comb))
     if Amoney != 0:
-        print('Monedas Æ = '+str(Amoney))
+        print('Æ Credits = '+str(Amoney))
     print('')
-    print("Has sobrevivido "+str(days)+" días.")
-    print("Acciones: Saquear, Reparar (ID), Manual, Explorar, Dormir")
+    print("You've survived "+str(days)+" days.")
+    print("Accions: Scavenge, Fix (ID), Manual, Explore, Sleep")
     print("")
     if event != 1:
         if event == 2:
             if fixer != '1':
                 if fixwer != 1:
-                    oxygen = 'Roto'
-                    print("El generador de oxigeno se descompuso, las reservas aguantan un dia.")
+                    oxygen = 'Broken'
+                    print("The oxygen generator broke down, reserves are up for the day.")
                     GO = 1
             else:
-                oxygen = 'En linea'
+                oxygen = 'Online'
                 GO = 0
         elif event == 3:
             if fixer != '2':
                 if fixwer != 1:
-                    water = 'Roto'
-                    print("El renovador de agua se descompuso, las reservas aguantan un dia.")
+                    water = 'Broken'
+                    print("The water renewal system broke down, reserves are up for the day.")
                     GO = 1
             else:
-                water = 'En linea'
+                water = 'Online'
                 GO = 0
         elif event == 9:
-            print("Al explorar una caja flotante en el espacio te encuentras con unas monedas de algun tipo... + 25 Æ")
+            print("When going out for a space walk, you found a crate full of credits... + 25 Æ [Credits]")
             Amoney = Amoney + 25
             event = 1
     opt = ""
     opt = input()
     if opt != "":
-        if opt == 'Saquear':
+        if opt == 'Scavenge':
             if Comb >= 1:
                 luck = random.randint(1,5)
                 if luck == 1:
                     print('')
-                    print("Tuviste suerte! +1 Suministros")
+                    print("You had luck! +1 Supplies")
                     supplies = supplies + 1
                     opt = ""
                     Comb = Comb - 2
                 elif luck == 3:
                     print('')
-                    print('Enhorabuena! Encontraste combustible. + 3 combustible')
+                    print('Good news! Spare fuel tanks are in the deposits. + 3 combustible')
                     Comb = Comb + 3
                     Comb = Comb - 2
                     opt = ""
                 elif luck == 5:
-                    print("Encontraste un mini deposito de creditos! + 10 Æ")
+                    print("You found a small credit deposit! + 10 Æ [Credits]")
                     Comb = Comb - 2
                     Amoney = Amoney + 10
                 else:
                     print('')
-                    print("No tuviste suerte.")
+                    print("You're out of luck.")
                     Comb = Comb - 2
                 opt = ""
         elif opt == 'Manual':
             print("""
-            Manual del juego Blackout:
-            El juego es simple, ¡sobrevive! para ello los sistemas OxyGen (¿lo entiendes?) y WaterRen 
-            DEBEN estar en línea en todo momento, además necesitarás suministros para comer.
-            En el juego hay eventos especiales que pueden cambiar el rumbo de tu partida (sea para bien
-            o para mal).
-            ¡Bienvenido a bordo Capitán!
+            Manual of the Blackout:
+            The game is simple, survive! For that the OxyGen (Get it?) and WaterRen systems
+            MUST at all times, you'll need supply crates of food to survive.
+            In the game, there are diverse events that affect you (Whether that is
+            going to help you or not.).
+            ¡Welcome aboard, Captain!
             
-            IDs del comando 'Reparar':
+            'Fix' Command IDs:
             1 = OxyGen
             2 = WaterRen
-            
-            Posibles Errores:
-            - Error de traducción: No hay nada que pueda hacer.
-            - Error de conección: Igual. =/
-            - Reparar deja de pedir IDs: Es probable que sea por que tienes al mecanico.
             """)
-            time.sleep(10) ## Asegurate de poder retrasar el menu un poco
+            time.sleep(10)
             opt = ""
-        elif opt == 'Reparar':
+        elif opt == 'Fix':
             print('')
-            print("Por favor, pon la ID del sistema.")
+            print("Please put the ID.")
             fixer = input()
             if fixer != "":
                 if fixer == '1':
-                    if oxygen != 'En linea':
+                    if oxygen != 'Online':
                         print("")
-                        print("Arreglaste exitosamente el sistema.")
-                        oxygen = 'En linea'
+                        print("The system was sucessfully repaired.")
+                        oxygen = 'Online'
                     else:
                         print("")
-                        print("Esta activo, por que hiciste eso?")
+                        print("The system is already repaired")
                 elif fixer == '2':
-                    if water != 'En linea':
+                    if water != 'Online':
                         print("")
-                        print("Arreglaste exitosamente el sistema.")
-                        water = 'En linea'
+                        print("The system was sucessfully repaired.")
+                        water = 'Online'
                     else:
                         print("")
-                        print("Esta activo, por que hiciste eso?")
+                        print("The system is already repaired.")
                 elif fixer == '3':
-                    print("This function is not made yet.")
-        elif opt == 'Dormir':
+                    print("debug menu activated.")
+                    time.sleep(10)
+                    print("Sike! debug is not implemented.")
+        elif opt == 'Slepp':
             if UE1 == 1:
                 if UE2 == 1:
-                    print("Tu y tu tripulación descansaron... - 3 suministros")
+                    print("You and your crew slept... - 3 supplies")
                     supplies = supplies - 3
                 else:
-                    print("Tu y tu tripulación descansaron... - 2 suministros")
+                    print("You and your crew slept... - 2 suppliess")
                     supplies = supplies - 2
             else:
-                print("Descansaste comodamente... - 1 suministros")
+                print("You slept... - 1 suppliess")
                 supplies = supplies - 1
             days = days + 1
             if GO == 1:
                 break
             event = random.randint(1,9)
-        elif opt == 'Explorar':
+        elif opt == 'Explore':
             print('')
             if Comb >= 0:
                 Comb = Comb - 2
                 if UE1 == 1:
-                    planet = random.randint(1,7)
+                    if opi == 'Y':
+                        planet = random.randint(1,7)
+                        else:
+                            planet = random.randint(1,4)
                 else:
                     planet = random.randint(1,4)
                 if planet == 1:
-                    print("Llegas a un planeta similar a la Tierra, pero es muy rojizo, como Marte.")
-                    print("Dentro de el llegas a un templo, el cual esta ocupado por unos aliens humanoides y morados.")
-                    print("Por suerte, no eran hostiles. Y el tesoro que guardaban era un deposito grande de combustible.")
-                    print("Sin dudarlo, te aventaste por el deposito con cautela y tomaste 10L de combustible. + 10 combustible")
+                    print("You arrive at a planet similar to Earth, but it is very reddish, like Mars.")
+                    print("Inside you reach a temple, which is occupied by humanoid, purple aliens.")
+                    print("Luckily, they were not hostile. And the treasure they were guarding was a large fuel lake.")
+                    print("Without hesitation, you cautiously ventured into the lake and took 10L of fuel from it. + 10 fuel tanks")
                     Comb = Comb + 10
                 elif planet == 2:
-                    print("Al vagar con tu nave, te encontraste con un planeta amarillo con anillos,el cual pertenecio a la RND (República de Nuevo Destino) y estaba REPLETO de suministros y combustible. + 10 suministros, + 10 combustible")
+                    print("While wandering with your ship, you came across a yellow ringed planet, which belonged to the RND (Republic of New Destiny) and was FULL of supplies and fuel. + 10 supplies, + 10 fuel tanks")
                     Comb = Comb + 10
                     supplies = supplies + 10
                 elif planet == 3:
-                    print("Al iniciar el protocolo de ignición, tu nave despego prematuramente hacia un planeta hostil, por la cantidad de daños que sufriste, te tuviste que quedar varado ahí por 1 semana. + 7 Días, - 10 suministros, - 5 combustible")
+                    print("When initiating the ignition protocol, your ship took off prematurely towards a hostile planet, because of the amount of damage you suffered, you had to stay stranded there for 1 week. + 7 Days, - 10 supplies, - 5 fuel tanks")
                     Comb -= 5
                     supplies -= 10
                     days += 7
                 elif planet == 4:
-                    print("Te estrellaste en un gigante de gas, lamentablemente no tuviste mucha suerte al salir. - 3 suministros, - 9 combustible, + 4 dias")
+                    print("You crashed into a gas giant, unfortunately you didn't have much luck getting out. - 3 supplies, - 9 fuel, + 4 days")
                     Comb -= 9
                     supplies -= 3
                     days += 4
                 elif planet == 5:
-                    print("Por accidente, tu mecanico activo el protocolo de ignición antes de irse a la cama. Cuando despertaron, encontraron la antigua colonia petrolera de Teegarden B. + 7 suministros, + 41 combustible")
+                    print("By accident, your mechanic activated the ignition protocol before going to bed. When you woke up, you found the former oil colony of Teegarden B. + 7 supplies, + 41 fuel tanks.")
                     Comb = Comb + 41
                     supplies = supplies + 7
                 elif planet == 6:
-                    print("Por la destruida Via Lactea, tu y tu tripulación encontraron LA loteria, encarnada en la vieja estacion espacial   'Reborn'. + 20 suministros, + 15 combustible ")
+                    print("Through the destroyed Milky Way, you and your crew found THE lottery, embodied in the old space station 'Reborn'. + 20 supplies, + 15 fuel tanks")
                     Comb = Comb + 15
                     supplies = supplies + 20
                 elif planet == 7:
-                    print("Al entrar en un agujero de gusano, tu y tu tripulación viajaron al futuro por 2 dias y encontraron un planeta des-truido por algo inimaginable. En el lograron encontrar escasos recursos. + 6 suministros, + 5 combustible, + 2 dias")
+                    print("Entering a wormhole, you and your crew traveled to the future for 2 days and found a planet destroyed by something unimaginable. On it you managed to find scarce resources. + 6 supplies, + 5 fuel tanks, + 2 days")
                     Comb = Comb + 5
                     supplies = supplies + 6
                     days = days + 2
 print('')
 if supplies <= 0:
-    print("Tu viaje acabo ya que no tenias suministros")
+    print("Starvation ended your journey...")
 if GO == 1:
-    print("Uno de los sistemas vitales de tu nave estuvo mucho tiempo inactivo...")
-print("")
-if days == 365:
-    print("Estuviste varado un año entero, ante cualquier pronostico, no te rendiste...")
-    time.sleep(2)
-    print("Y por eso te digo con lo ultimo que me queda...")
-    time.sleep(2)
-    print()
-    print("Ganaste. Espero que te haya gustado. -D")
+    print("One of the vital systems on your ship went unnoticed for long...")
